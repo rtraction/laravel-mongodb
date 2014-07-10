@@ -28,13 +28,13 @@ abstract class Model extends \Jenssegers\Eloquent\Model {
      */
     protected $primaryKey = '_id';
 
-	/**
-	 * Allow json attributes to be exposable. This is mainly for
-	 * relations that can be kept alive in a toJson()
-	 *
-	 * @var array
-	 */
-	protected $exposeJsonAttributes = [];
+    /**
+     * Allow json attributes to be exposable. This is mainly for
+     * relations that can be kept alive in a toJson()
+     *
+     * @var array
+     */
+    protected $expose = [];
 
     /**
      * The connection resolver instance.
@@ -292,7 +292,7 @@ abstract class Model extends \Jenssegers\Eloquent\Model {
             // internal array of embedded documents. In that case, we need
             // to hide these from the output so that the relation-based
             // attribute can take over.
-            else if (starts_with($key, '_') and ! in_array($key, $this->exposeJsonAttributes))
+            else if (starts_with($key, '_') and ! in_array($key, $this->expose))
             {
                 $camelKey = camel_case($key);
 
