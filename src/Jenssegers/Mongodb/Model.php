@@ -58,6 +58,17 @@ abstract class Model extends \Jenssegers\Eloquent\Model {
             return (string) $this->attributes['_id'];
         }
     }
+    
+    /**
+     * Get the table qualified key name.
+     *
+     * @return string
+     */
+    public function getQualifiedKeyName()
+    {
+    	return $this->getKeyName();
+    }
+    
 
     /**
      * Define an embedded one-to-many relationship.
